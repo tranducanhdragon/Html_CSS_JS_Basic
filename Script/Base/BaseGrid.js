@@ -105,7 +105,6 @@ class BaseGrid {
         let me = this;
         me.grid.on('click', 'tbody tr', function(){
             //remove background của row đã đc chọn trước đó
-            debugger;
             me.grid.find('tr').removeClass('selectedRow');
             
             //thêm background cho row mới này
