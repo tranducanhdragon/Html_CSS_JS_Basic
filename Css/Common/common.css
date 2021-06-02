@@ -127,8 +127,31 @@ body, html{
     background-repeat:no-repeat;
 }
 
-.RightHeadIcon.tooltip {}
-
+.RightHeadIcon .tooltipThongBao{
+    position:relative;
+    margin-top:0.1%;
+    margin-left:4%;
+}
+.RightHeadIcon .tooltipBang{
+    position:relative;
+    margin-top:0.1%;
+    margin-left:6%;
+}
+.RightHeadIcon .tooltipThacMac{
+    position:relative;
+    margin-top:0.1%;
+    margin-left:8%;
+}
+.RightHeadIcon .tooltipDangNhap{
+    position:relative;
+    margin-top:0.1%;
+    margin-left:10%;
+}
+.RightHeadIcon .tooltipMoRong{
+    position:relative;
+    margin-top:0.1%;
+    margin-left:12%;
+}
 .RightHeadContent .ThongBaoIcon{
     background-position:-325px -95px;
 }
@@ -163,6 +186,7 @@ body, html{
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
 .btnHeadContent{
     width:10%;
     height:50%;
@@ -211,6 +235,11 @@ body, html{
 }
 .BaoCaoIcon{
     background-position:-319px -150px;
+}
+.TextMenu .NhanVienIcon{
+    background-position: -11px -15px;
+    background-color:#ffffff;
+    border-radius:5px;
 }
 .TextMenu1{
     width:60%;
@@ -349,12 +378,13 @@ thead td, th{
 }
 .LeftTitleBody{
     width:400px;
-    heigth:50px;
+    height:50px;
     font-size:20px;
     font-weight:bold;
     margin-left:20px;
     display:flex;
 }
+
 .LeftTitleBody .btnSync{
     width:20%;
     height:100%;
@@ -468,12 +498,20 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-285px -95px;
 }
+.CongCu .TimKiemIcon .main-content__menu-icon .tooltipExcel{
+    margin-left:-5%;
+    margin-top:-2%;
+}
 .CongCu .TimKiemIcon .main-content__menu-icon .PrintIcon{
     width:60%;
     height:100%;
     background-image:url('./Icon/qlts-icon.svg');
     background-repeat: no-repeat;
     background-position:-319px -51px;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .tooltipIn{
+    margin-left:0%;
+    margin-top:-2%;
 }
 .CongCu .TimKiemIcon .main-content__menu-icon .MenuDd{
     width:60%;
@@ -482,12 +520,20 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-148px -228px;
 }
+.CongCu .TimKiemIcon .main-content__menu-icon .tooltipCongCu{
+    margin-left:4%;
+    margin-top:-2%;
+}
 .CongCu .TimKiemIcon .main-content__menu-icon .MoRongIcon{
     width:60%;
     height:100%;
     background-image:url('./Icon/qlts-icon.svg');
     background-repeat: no-repeat;
     background-position:-373px -8px;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .tooltipDanhMuc{
+    margin-left:8%;
+    margin-top:-2%;
 }
 .align-right{
     text-align: right;

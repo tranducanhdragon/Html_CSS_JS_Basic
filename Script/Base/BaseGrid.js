@@ -17,6 +17,9 @@ class BaseGrid {
 
         //sự kiện click vào một hàng thì đổi background
         me.eventClickRow();
+
+        //sự kiện bấm thêm sửa xóa nạp
+        me.eventToolBar()
     }
     //Tạo table cho đối tượng Asset
     loadData(data) {
@@ -84,7 +87,7 @@ class BaseGrid {
     /**Lấy dữ liệu từ server bằng ajax */
     getDataFromApi() {
         let me = this,
-            url = `${Constant.UrlPrefix}${'v1/employees'}`;
+            url = `${Constant.UrlPrefix}${me.grid.attr('Url')}`;
 
         CommonFn.Ajax(url, Resource.Method.Get, {}, function (response) {
             if (response) {
@@ -110,6 +113,38 @@ class BaseGrid {
             //thêm background cho row mới này
             $(this).addClass('selectedRow');
         })
+    }
+    /**Sự kiện eventToolBar thêm sửa xóa nạp */
+    eventToolBar(){
+        let me = this,
+            toolBarId = me.grid.attr('toolBar'),
+            command = $(`#${toolBarId}`),
+            fireEvent = null;
+        command.on('click', '[CommandType]', function(){
+            let cmdType = $(this).attr('CommandType');
+            switch(cmdType){
+                case Resource.CommandType.Add:
+                    fireEvent = me.add;
+                    break;
+                case Resource.CommandType.Edit:
+                    fireEvent = me.edit;
+                    break;
+                case Resource.CommandType.Delete:
+                    fireEvent = me.Delete;
+                    break;
+                case Resource.CommandType.Refresh:
+                    fireEvent = me.refresh;
+                    break;
+            }
+            if(fireEvent && typeof(fireEvent) === 'function'){
+                fireEvent();
+            }
+        })
+    }
+
+    add(){
+        $('.DialogModal').show(300);
+        $('.Dialog').show(300);
     }
 }
 

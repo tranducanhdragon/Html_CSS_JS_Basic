@@ -111,10 +111,10 @@
                 <div class="MenuIcon NhanVienIcon"></div>
                 <div class="MenuText">Nhân viên</div>
             </div>
-            <div class="TextMenu" id="TaiSanClick">
+            <!-- <div class="TextMenu" id="TaiSanClick">
                 <div class="MenuIcon TaiSanIcon"></div>
                 <div class="MenuText">DS Tài sản</div>
-            </div>
+            </div> -->
             <div class="TextMenuLon">
                 <div class="MenuIconLon" id="MenuHienRa"></div>
                 <div class="MenuTextLon">Menu lớn</div>
@@ -197,19 +197,19 @@
             </div>
             <div class="RightHeadContent">
                 <div class='RightHeadIcon ThongBaoIcon tooltip'>
-                    <span class="tooltiptext">Thông báo</span>
+                    <span class="tooltiptext tooltipThongBao">Thông báo</span>
                 </div>
                 <div class='RightHeadIcon BangIcon tooltip'>
-                    <span class="tooltiptext">Bảng</span>
+                    <span class="tooltiptext tooltipBang">Bảng</span>
                 </div>
                 <div class='RightHeadIcon ThacMacIcon tooltip'>
-                    <span class="tooltiptext">Thắc mắc</span>
+                    <span class="tooltiptext tooltipThacMac">Thắc mắc</span>
                 </div>
                 <div class='RightHeadIcon DangNhapIcon tooltip'>
-                    <span class="tooltiptext">Đăng nhập/ Đăng xuất</span>
+                    <span class="tooltiptext tooltipDangNhap">Đăng nhập/ Đăng xuất</span>
                 </div>
                 <div class='RightHeadIcon MoRongIcon tooltip'>
-                    <span class="tooltiptext">Mở rộng</span>
+                    <span class="tooltiptext tooltipMoRong">Mở rộng</span>
                 </div>
 
             </div>
@@ -217,11 +217,11 @@
         <div class="BodyContent">
             <div class="TitleBody">
                 <div class="LeftTitleBody">
-                    Danh sách tài sản
+                    Danh sách nhân viên
                     <button class="btnSync">
                     </button>
                 </div>
-                <div class="LeftTitleBody">
+                <div class="LeftTitleBody" id="ToolBarEmployee">
                     <button class="btnAdd" CommandType="Add">
                         Thêm
                     </button>
@@ -256,27 +256,27 @@
                     <button class="buttonBodyContent" id="btnXoa">Xóa</button> -->
                     <div class="TimKiem">
                         <div class="CongCuTimKiemIcon"></div>
-                        <div class="TimKiemInput">Tìm kiếm tài sản</div>
+                        <div class="TimKiemInput">Tìm kiếm</div>
                     </div>
                     <div class="TimKiemIcon">
                         <div class="main-content__menu-icon">
                             <div class="ExcelIcon tooltip">
-                                <span class="tooltiptext">Xuất excel</span>
+                                <span class="tooltiptext tooltipExcel">Xuất excel</span>
                             </div>
                         </div>
                         <div class="main-content__menu-icon">
                             <div class='PrintIcon tooltip'>
-                                <span class="tooltiptext">In file</span>
+                                <span class="tooltiptext tooltipIn">In file</span>
                             </div>
                         </div>
                         <div class="main-content__menu-icon">
                             <div class='MenuDd tooltip'>
-                                <span class="tooltiptext">Công cụ</span>
+                                <span class="tooltiptext tooltipCongCu">Công cụ</span>
                             </div>
                         </div>
                         <div class="main-content__menu-icon">
                             <div class="MoRongIcon tooltip">
-                                <span class="tooltiptext">Danh mục</span>
+                                <span class="tooltiptext tooltipDanhMuc">Danh mục</span>
                             </div>
                         </div>
                     </div>
@@ -316,7 +316,7 @@
                     </div>
 
                     <!-- Danh sách nhân viên -->
-                    <div id="gridEmployee" Url="v1/employees" Toolbar="toolBarEmployee" ItemId="EmployeeId">
+                    <div id="gridEmployee" Url="v1/employees" toolBar="ToolBarEmployee" ItemId="EmployeeId">
                         <div class="hide-item">
                             <div class="col" FieldName="FullName">Họ tên</div>
                             <div class="col" FieldName="EmployeeCode">Mã nhân viên</div>
@@ -333,9 +333,9 @@
             </div>
         </div>
     </div>
-    <div class="DialogModal">
+    <div class="DialogModal hide-item">
     </div>
-    <div class="Dialog">
+    <div class="Dialog hide-item">
         <div class="DialogHead">
             Thêm mới nhân viên
         </div>

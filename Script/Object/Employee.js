@@ -13,5 +13,8 @@ class Employee extends BaseGrid{
 
         //gọi đến sự kiện lắng nghe click row
         me.eventClickRow();
+
+        //gọi đến sự kiện eventToolBar
+        me.eventToolBar();
     }
 }

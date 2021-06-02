@@ -71,7 +71,7 @@ $(document).ready(function(){
 
     //Khởi tạo các object
     /* Khởi tạo danh sách tài sản*/
-    let taisan = new Asset('#gridAssets', assets);
+    //let taisan = new Asset('#gridAssets', assets);
     
     //khởi tạo Employee
     let nv = new Employee('#gridEmployee', {});
@@ -138,16 +138,18 @@ $(document).ready(function(){
     $('#NhanVienClick').click(function(){
         $('#gridAssets').hide();
         $('#gridEmployee').show();
+
     });
     //Mở grid tài sản
     $('#TaiSanClick').click(function(){
         $('#gridEmployee').hide();
         $('#gridAssets').show();
+
     })
 
     //Đóng dialog
     $('#CloseDialog').click(function(){
-        $('.Dialog').hide();
-        $('.DialogModal').hide();
+        $('.Dialog').hide(300);
+        $('.DialogModal').hide(300);
     });
 })
