@@ -57,26 +57,11 @@ console.log(student4);
 
 //Add jquery
 $(document).ready(function(){
-    // $('.DialogModal').hide();
-    // $('.Dialog').hide();    
-    // $('#btnThem').click(function(){
-    //     alert("Mày vừa bấm thêm đúng ko?");
-    //     $('.Dialog').show();
-    //     $('.DialogModal').show();
-    // });
-    // $('#btnSua').click(function(){
-    //     alert("Mày lại bấm sửa?");
-    // });
-    // $('#btnXoa').click(function(){
-    //     alert("Mày lại chuyển thành xóa rồi, bị điên à?");
-    // });
-    // $('#CloseDialog').click(function(){
-    //     $('.Dialog').hide();
-    //     $('.DialogModal').hide();
-    // });
-
 
     //Khởi tạo
+    $('.DialogModal').hide();
+    $('.Dialog').hide();
+
     $('#ExpandDd').slideUp();
     $('#ExpandDd2').slideUp();
     $('#ExpandDd3').slideUp();
@@ -84,10 +69,20 @@ $(document).ready(function(){
     $('#RightMenuTaiSanHTExpandId').hide();
     $('#RightMenuCongCuDungCuExpandId').hide();
 
+    //Khởi tạo các object
+    /* Khởi tạo danh sách tài sản*/
+    let taisan = new Asset('#gridAssets', assets);
+    
+    //khởi tạo Employee
+    let nv = new Employee('#gridEmployee', {});
+    
+    //Khởi tạo grid
+    $('#gridAssets').hide();
+    $('#gridEmployee').hide();
+
 
     $('#TaiSanDd').click(function(){
         $('#ExpandDd').slideToggle(300);
-
     });
 
     /* dropdown TaiSan HT/BD */
@@ -138,4 +133,21 @@ $(document).ready(function(){
             $('#RightMenuCongCuDungCuExpandId').hide();
         }
     })
+
+    //mở grid nhân viên
+    $('#NhanVienClick').click(function(){
+        $('#gridAssets').hide();
+        $('#gridEmployee').show();
+    });
+    //Mở grid tài sản
+    $('#TaiSanClick').click(function(){
+        $('#gridEmployee').hide();
+        $('#gridAssets').show();
+    })
+
+    //Đóng dialog
+    $('#CloseDialog').click(function(){
+        $('.Dialog').hide();
+        $('.DialogModal').hide();
+    });
 })

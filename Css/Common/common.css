@@ -2,14 +2,11 @@ body, html{
     margin:0px;
     height:100vh;
 }
-.container-fluid{
-    padding:0px;
-}
 .Menu{
     float:left;
     border:0px solid #000000;
-    width:250px;
-    height:100%;   
+    width: 250px;
+    height:100%;
 }
 .MenuVao{
     transform: translateX(-190px);
@@ -313,33 +310,6 @@ thead td, th{
     background-color:#eeecec;
     border:1px solid #000000;
 }
-.DialogModal{
-    width:100%;
-    height:100%;
-    background-color:#9d9d9d;
-    position:absolute;
-    left:0px;
-    top:0px;
-    opacity:50%;
-}
-.Dialog{
-    width:600px;
-    height:300px;
-    background-color:#9d9d9d;
-    position:absolute;
-    left:30%;
-    top:25%;
-}
-.DialogHead{
-    width:100%;
-    height:20%;
-}
-.DialogBody{
-    width:100%;
-    height:80%;
-    background-color:#faaf41;
-}
-
 .CongCu{
     width:calc(100% - 10px);
     height:50px;
@@ -379,6 +349,7 @@ thead td, th{
 }
 .LeftTitleBody{
     width:400px;
+    heigth:50px;
     font-size:20px;
     font-weight:bold;
     margin-left:20px;
@@ -393,8 +364,48 @@ thead td, th{
     background-repeat:no-repeat;
     background-position:-96px -52px;
 }
+.LeftTitleBody .btnAdd{
+    width:100%;
+    height:80%;
+    border-radius:10px;
+    color:#ffffff;
+    background-color:#59a6c0;
+}
+.LeftTitleBody .btnAdd:hover{
+    background-color:#0e3159;
+}
+.LeftTitleBody .btnEdit{
+    width:100%;
+    height:80%;
+    border-radius:10px;
+    color:#ffffff;
+    background-color:#59a6c0;
+}
+.LeftTitleBody .btnEdit:hover{
+    background-color:#0e3159;
+}
+.LeftTitleBody .btnDelete{
+    width:100%;
+    height:80%;
+    border-radius:10px;
+    color:#ffffff;
+    background-color:#59a6c0;
+}
+.LeftTitleBody .btnDelete:hover{
+    background-color:#0e3159;
+}
+.LeftTitleBody .btnRefresh{
+    width:100%;
+    height:80%;
+    border-radius:10px;
+    color:#ffffff;
+    background-color:#59a6c0;
+}
+.LeftTitleBody .btnRefresh:hover{
+    background-color:#0e3159;
+}
 .RightTitleBody{
-    margin-left:65%;
+    margin-left:45%;
     width:300px;
     display:flex;
 }
@@ -486,4 +497,75 @@ thead td, th{
 }
 .hide-item{
     display:none;
+}
+/* css cho form thêm mới */
+.DialogModal{
+    width:100%;
+    height:100%;
+    background-color:#9d9d9d;
+    position:absolute;
+    left:0px;
+    top:0px;
+    opacity:50%;
+}
+.Dialog{
+    width:600px;
+    height:400px;
+    background-color:#0e3159;
+    position:absolute;
+    left:30%;
+    top:25%;
+    border-radius:10px;
+}
+.DialogHead{
+    width:100%;
+    height:10%;
+    line-height:40px;
+    color:#ffffff;
+    text-align:center;
+}
+.DialogBody{
+    width:100%;
+    height:80%;
+    background-color:#ffffff;
+}
+.DialogBody .row-item{
+    width: 100%;
+    height: 20%;
+}
+.d-flex{
+    display:flex;
+}
+.flex-1{
+    flex: 1;
+}
+.DialogBody .row-item .control-item{
+    height:100%;
+    width:100%;
+    background-color:#ffffff;
+    margin-left:30px;
+}
+.DialogBody .row-item .control-item input{
+    border-radius:5px;
+    height:40%;
+}
+.DialogBody .row-item .control-right{
+    margin-left: 30px;
+}
+.DialogCongCu{
+    width:100%;
+    height:10%;
+    background-color:#0e3159;
+    text-align:right;
+    border-radius:10px;
+}
+.hide{
+    display: none;
+}
+
+.notValidControl{
+    border-color: red;
+}
+.selectedRow{
+    background: #c6c6f7;
 }

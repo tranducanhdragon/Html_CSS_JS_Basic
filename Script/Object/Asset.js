@@ -13,4 +13,4 @@ class Asset extends BaseGrid{
 tdanh
 29.05.21
 */
-let taisan = new Asset('#gridAssets', assets);
+// let taisan = new Asset('#gridAssets', assets);

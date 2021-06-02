@@ -11,6 +11,8 @@
     <!-- Chung -->
     <link rel="stylesheet" href="../Css/Common/common.css">
     <!-- Riêng -->
+    <link rel="stylesheet" href="../Css/Object/Asset.css">
+    <link rel="stylesheet" href="../Css/Object/employee.css">
 
     <title>Document</title>
 </head>
@@ -28,10 +30,10 @@
                 <div class="MenuIcon TongQuanIcon"></div>
                 <div class="MenuText">Tổng quan</div>
             </div>
-            <div class="TextMenu">
+            <div class="TextMenu" id="TaiSanDd">
                 <div class="MenuIcon TaiSanIcon" id="TaiSanId"></div>
                 <div class="MenuText">Tài sản</div>
-                <div class="MenuDd" id="TaiSanDd">
+                <div class="MenuDd">
                 </div>
             </div>
             <div class="ExpandDropDown" id="ExpandDd">
@@ -45,10 +47,10 @@
                 </div>
             </div>
 
-            <div class="TextMenu">
+            <div class="TextMenu" id="HTBDDd">
                 <div class="MenuIcon TaiSanHTDBIcon" id="TaiSanHTDBId"></div>
                 <div class="MenuText">Tài sản HT/ĐB</div>
-                <div class="MenuDd" id="HTBDDd">
+                <div class="MenuDd">
                 </div>
             </div>
             <div class="ExpandDropDown" id="ExpandDd2">
@@ -77,10 +79,10 @@
                     <div class="MenuText">Ghi giảm</div>
                 </div>
             </div>
-            <div class="TextMenu">
+            <div class="TextMenu" id="CongCuDd">
                 <div class="MenuIcon CongCuDungCuIcon" id="CongCuDungCuId"></div>
                 <div class="MenuText">Công cụ dụng cụ</div>
-                <div class="MenuDd" id="CongCuDd">
+                <div class="MenuDd">
                 </div>
             </div>
             <div class="ExpandDropDown" id="ExpandDd3">
@@ -104,6 +106,14 @@
             <div class="TextMenu">
                 <div class="MenuIcon BaoCaoIcon"></div>
                 <div class="MenuText">Báo cáo</div>
+            </div>
+            <div class="TextMenu" id="NhanVienClick">
+                <div class="MenuIcon NhanVienIcon"></div>
+                <div class="MenuText">Nhân viên</div>
+            </div>
+            <div class="TextMenu" id="TaiSanClick">
+                <div class="MenuIcon TaiSanIcon"></div>
+                <div class="MenuText">DS Tài sản</div>
             </div>
             <div class="TextMenuLon">
                 <div class="MenuIconLon" id="MenuHienRa"></div>
@@ -211,6 +221,20 @@
                     <button class="btnSync">
                     </button>
                 </div>
+                <div class="LeftTitleBody">
+                    <button class="btnAdd" CommandType="Add">
+                        Thêm
+                    </button>
+                    <button class="btnEdit" CommandType="Edit">
+                        Sửa
+                    </button>
+                    <button class="btnDelete" CommandType="Delete">
+                        Xóa
+                    </button>
+                    <button class="btnRefresh" CommandType="Refresh">
+                        Nạp
+                    </button>
+                </div>
                 <div class="RightTitleBody">
                     <div class="TextMenu">
                         <div class="MenuText">Thêm</div>
@@ -290,31 +314,102 @@
                             <div class="col" FieldName="ResidualValue" DataType="Money">Giá trị còn lại</div>
                         </div>
                     </div>
+
+                    <!-- Danh sách nhân viên -->
+                    <div id="gridEmployee" Url="v1/employees" Toolbar="toolBarEmployee" ItemId="EmployeeId">
+                        <div class="hide-item">
+                            <div class="col" FieldName="FullName">Họ tên</div>
+                            <div class="col" FieldName="EmployeeCode">Mã nhân viên</div>
+                            <div class="col" FieldName="DateOfBirth" DataType="Date">Ngày sinh</div>
+                            <div class="col" FieldName="Gender">Giới tính</div>
+                            <div class="col" FieldName="Address">Địa chỉ</div>
+                            <div class="col" FieldName="PhoneNumber">Số điện thoại</div>
+                            <div class="col" FieldName="Email">Email</div>
+                            <div class="col" FieldName="Salary" DataType="Number">Lương</div>
+                            <div class="col" FieldName="DepartmentName">Phòng ban</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="DialogModal">
+    <div class="DialogModal">
     </div>
     <div class="Dialog">
         <div class="DialogHead">
-
+            Thêm mới nhân viên
         </div>
         <div class="DialogBody">
-            <div class="DivName">
-                <label id="lbName">Tên</label>
-                <input type="text" id="Name">
+            <div class="row-item d-flex">
+                <div class="control-item flex-1">
+                    <label for="">Họ tên <span style="color: red;">(*)</span></label>
+                    <br>
+                    <input type="text" FieldName="FullName" Require="true">
+                </div>
+                <div class="control-item control-right flex-1">
+                    <label for="">Mã nhân viên <span style="color: red;">(*)</span></label>
+                    <br>
+                    <input type="text" FieldName="EmployeeCode" Require="true">
+                </div>
             </div>
-            <div class="DivAge">
-                <label id="lbAge">Tuổi</label>
-                <input type="text" id="Age">
+
+            <div class="row-item d-flex">
+                <div class="control-item flex-1">
+                    <label for="">Giới tính</label>
+                    <br>
+                    <select FieldName="Gender" DataType="Enum" EnumName="Gender">
+                        <option value="0">Nữ</option>
+                        <option value="1">Nam</option>
+                        <option value="2">Khác</option>
+                    </select>
+                </div>
+                <div class="control-item control-right flex-1">
+                    <label for="">Ngày sinh</label>
+                    <br>
+                    <input type="date" FieldName="DateOfBirth" DataType="Date">
+                </div>
+            </div>
+
+            <div class="row-item d-flex">
+                <div class="control-item flex-1">
+                    <label for="">Số điện thoại</label>
+                    <br>
+                    <input type="text" FieldName="PhoneNumber">
+                </div>
+                <div class="control-item control-right flex-1">
+                    <label for="">Email</label>
+                    <br>
+                    <input type="text" FieldName="Email">
+                </div>
+            </div>
+
+            <div class="row-item d-flex">
+                <div class="control-item flex-1">
+                    <label for="">Mức lương <span style="color: red;">(*)</span></label>
+                    <br>
+                    <input type="number" FieldName="Salary" DataType="Number" Require="true">
+                </div>
+                <div class="control-item control-right flex-1">
+                    <label for="">Phòng ban</label>
+                    <br>
+                    <input type="text" FieldName="DepartmentName">
+                </div>
+            </div>
+
+            <div class="row-item d-flex">
+                <div class="control-item flex-1">
+                    <label for="">Địa chỉ</label>
+                    <br>
+                    <input type="text" FieldName="Address">
+                </div>
             </div>
         </div>
         <div class="DialogCongCu">
-            <button id="Luu">Lưu</button>
+            <button id="Cat">Cất</button>
             <button id="CloseDialog">Đóng</button>
         </div>
-    </div> -->
+    </div>
+
 
     <!-- thư viện -->
     <script src="../Script/Common/jquery-3.6.0.js"></script>
@@ -322,10 +417,14 @@
     <!-- common -->
     <script src="../Script/Object/index.js"></script>
     <script src="../Script/Common/common.js"></script>
+    <script src="../Script/Common/Contant.js"></script>
+    <script src="../Script/Common/Enumeration.js"></script>
+    <script src="../Script/Common/Resource.js"></script>
     <script src="../Script/Common/data.js"></script>
     <script src="../Script/Base/BaseGrid.js"></script>
     <!-- riêng -->
     <script src="../Script/Object/Asset.js"></script>
+    <script src="../Script/Object/Employee.js"></script>
 </body>
 
 </html>
