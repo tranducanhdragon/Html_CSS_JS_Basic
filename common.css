@@ -1,0 +1,489 @@
+body, html{
+    margin:0px;
+    height:100vh;
+}
+.container-fluid{
+    padding:0px;
+}
+.Menu{
+    float:left;
+    border:0px solid #000000;
+    width:250px;
+    height:100%;   
+}
+.MenuVao{
+    transform: translateX(-190px);
+    transition: 0.3s;
+}
+.MenuRa{
+    transform: translateX(0);
+    transition: 0.3s;
+}
+#ThuNhoMenu:hover{
+    background-color:#4394c0;
+}
+.RightMenuExpand{
+    width:200px;
+    height:300px;
+    background-color:#ffffff;
+    position:absolute;
+    top:52px;
+    left:0px;
+    border:1px solid #000000;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+}
+.RightMenuExpand .RightMenuTitle{
+    text-align:center;
+    margin-bottom:10px;
+    border:1px solid #000000;
+}
+.RightMenuExpand .RightMenuText{
+    text-align:center;
+    margin-bottom:20px;
+    display:flex;
+}
+.RightMenuExpand .RightMenuText .RightMenuIcon{
+    width:10px;
+    height:100%;
+    margin-left:10px;
+    margin-right:40px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-118px -330px;
+}
+
+.Content{
+    border:0px solid #000000;
+    width:calc(100% - 253px);
+    height:100%;
+    margin-left:250px;
+}
+
+.HeadMenu{
+    width:100%;
+    height: 50px;
+    border:1px solid #000000;
+    background-color:#0e3159;
+    margin-top:0px;
+    color:#ffffff;
+    display:flex;
+}
+.HeadMenu .MenuText{
+    font-size:20px;
+    line-height:50px;
+    width:60%;
+    margin-left:0px;
+}
+.ContentMenu{
+    width:100%;
+    height: calc(100% - 50px);
+    border:1px solid #000000;
+    background-color:#0e3159;
+}
+.ContentMenu .TextMenu .MenuIcon{
+    width:20%;
+    margin-right:10px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+}
+.InnerContent{
+    width:calc(100% - 50px);
+    height:calc(100% - 50px);
+    background-color:#f1f1f1;
+    margin-top:0px;
+    margin-left:30px;
+}
+.HeadContent{
+    width:100%;
+    height:50px;
+    border:1px solid #000000;
+    background-color:#ffffff;
+    display:flex;
+}
+.LeftHeadContent{
+    width:200px;
+    height:100%;
+    margin-left:10px;
+    margin-right:0px;
+    background-color:#ffffff;
+    line-height:50px;
+}
+.NamButton{
+    width:50%;
+    height:70%;
+    background-color:#ffffff;
+    border-radius:5px;
+}
+.RightHeadContent{
+    width:20%;
+    height:100%;
+    background-color:#ffffff;
+    margin-left:65%;
+    display:flex;
+}
+.RightHeadContent .RightHeadIcon{
+    width:20%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+}
+
+.RightHeadIcon.tooltip {}
+
+.RightHeadContent .ThongBaoIcon{
+    background-position:-325px -95px;
+}
+.RightHeadContent .BangIcon{
+    background-position:-367px -401px;
+}
+.RightHeadContent .ThacMacIcon{
+    background-position:-59px -49px;
+}
+.RightHeadContent .DangNhapIcon{
+    background-position:-15px -4px;
+}
+.RightHeadContent .MoRongIcon{
+    background-position:-369px -5px;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 10%;
+  background-color: #acacac;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position:fixed;
+  left:75%;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.btnHeadContent{
+    width:10%;
+    height:50%;
+    background-color:#c6e0eb;
+}
+.BodyContent{
+    width:100%;
+    height:calc(100% - 50px);
+    border:1px solid #000000;
+    background-color:#f1f1f1;
+}
+
+.Menu .ContentMenu .TextMenu{
+    width:90%;
+    height:30px;
+    background-color:#0e3159;
+    color:#ededed;
+    border:0px solid #000000;
+    border-radius:5px;
+    margin-left: 10px;
+    margin-bottom:10px;
+    text-align:center;
+    line-height:30px;
+    display:flex;
+}
+.Menu .ContentMenu .TextMenu:hover{
+    background-color:#4394c0;
+}
+.TongQuanIcon{
+    background-position:-12px -150px;
+}
+.TaiSanIcon{
+    background-position:-55px -150px;
+}
+.TaiSanHTDBIcon{
+    background-position:-100px -150px;
+}
+.CongCuDungCuIcon{
+    background-position:-143px -150px;
+}
+.DanhMucIcon{
+    background-position:-186px -150px;
+}
+.TraCuuIcon{
+    background-position:-230px -150px;
+}
+.BaoCaoIcon{
+    background-position:-319px -150px;
+}
+.TextMenu1{
+    width:60%;
+    height:30px;
+    background-color:#2f4155;
+    color:#ededed;
+    border:0px solid #000000;
+    border-radius:5px;
+    margin-left: 65px;
+    margin-bottom:5px;
+    text-align:center;
+    line-height:30px;
+    display:flex;
+}
+.TextMenu1 .MenuIcon{
+    width:10%;
+}
+.Menu .ContentMenu .TextMenu1:hover{
+    background-color:#4394c0;
+}
+.HeadMenu .MenuIcon{
+    width:30%;
+    background-image:url(./Icon/HeadMenuIcon.png);
+    background-position:-5px -5px;
+}
+.MenuText{
+    width:80%;
+    line-height:30px;
+    border-radius:5px;
+}
+.TextMenu .MenuDd{
+    width:10%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-position:-158px -280px;
+}
+.HeadMenu .MenuDd{
+    width:10%;
+    height:100%;
+    text-align:center;
+    line-height:50px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-position:-418px -140px;
+}
+.Menu .ContentMenu .TextMenuLon{
+    width:10%;
+    height:30px;
+    background-color:#0e3159;
+    color:#ededed;
+    border:0px solid #000000;
+    border-radius:5px;
+    margin-left: 10px;
+    margin-bottom:10px;
+    text-align:center;
+    line-height:30px;
+    display:flex;
+    position:absolute;
+    bottom:10px;
+}
+.TextMenuLon .MenuIconLon{
+    width:30%;
+    margin-right:20px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-450px -150px;
+}
+.TextMenuLon .MenuTextLon{
+    width:80%;
+    line-height:30px;
+    text-align:left;
+}
+
+.Content .BodyContent .CongCu{
+    background-color:#ffffff;
+}
+.Content .BodyContent .CongCu button{
+    background-color:#bdd7e3;
+}
+.Content .BodyContent .Grid{
+    width:calc(100% - 10px);
+    height:calc(100% - 50px);
+    background-color:#ffffff;
+    border:0px solid #000000;
+    margin-top:0px;
+    margin-left:0px;
+}
+table{
+    width:100%;
+    border:1px solid #000000;
+    border-collapse:collapse;
+}
+table td{
+    border:1px solid #000000;
+    margin:0px;
+    text-align:center;
+}
+thead td, th{
+    background-color:#eeecec;
+    border:1px solid #000000;
+}
+.DialogModal{
+    width:100%;
+    height:100%;
+    background-color:#9d9d9d;
+    position:absolute;
+    left:0px;
+    top:0px;
+    opacity:50%;
+}
+.Dialog{
+    width:600px;
+    height:300px;
+    background-color:#9d9d9d;
+    position:absolute;
+    left:30%;
+    top:25%;
+}
+.DialogHead{
+    width:100%;
+    height:20%;
+}
+.DialogBody{
+    width:100%;
+    height:80%;
+    background-color:#faaf41;
+}
+
+.CongCu{
+    width:calc(100% - 10px);
+    height:50px;
+    display:flex;
+}
+.TimKiem{
+    margin-left:20px;
+    margin-top:5px;
+    width:50%;
+    height:70%;
+    line-height:50px;
+    border:1px solid #000000;
+    border-radius:5px;
+    display:flex;
+}
+.TimKiem .CongCuTimKiemIcon{
+    width:10%;
+    height:100%;
+    margin-left:0px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-235px -14px;
+}
+
+.TimKiem .TimKiemInput{
+    width:80%;
+    height:100%;
+    line-height:35px;
+    opacity:50%;
+    margin-left:5px;
+}
+
+.TitleBody{
+    height:50px;
+    line-height:50px;
+    display:flex;
+}
+.LeftTitleBody{
+    width:400px;
+    font-size:20px;
+    font-weight:bold;
+    margin-left:20px;
+    display:flex;
+}
+.LeftTitleBody .btnSync{
+    width:20%;
+    height:100%;
+    border:0px;
+    margin-left:5px;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-96px -52px;
+}
+.RightTitleBody{
+    margin-left:65%;
+    width:300px;
+    display:flex;
+}
+.RightTitleBody .TextMenu{
+    width:60%;
+    height:75%;
+    background-color:#59a6c0;
+    border:0px solid #000000;
+    border-radius:5px;
+    display:flex;
+}
+.RightTitleBody .TextMenu .MenuText{
+    width:60%;
+    height:100%;
+    line-height:35px;
+    color:#ffffff;
+    margin-left:30px;
+}
+.RightTitleBody .TextMenu .MenuDd{
+    width:40%;
+    height:100%;
+    line-height:40px;
+}
+.RightTitleBody .TextMenuIcon{
+    width:40%;
+    height:75%;
+    background-color:#ffffff;
+    border:0px solid #000000;
+    border-radius:5px;
+    display:flex;
+}
+.RightTitleBody .TextMenuIcon .MenuText{
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-2px -410px;
+}
+.RightTitleBody .TextMenuIcon .MenuDd{
+    width:30%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat:no-repeat;
+    background-position:-70px -320px;
+}
+.InnerContent .CongCu .TimKiemIcon{
+    width:40%;
+    height:100%;
+    margin-left:50%;
+    display:flex;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon{
+    width:100%;
+    height:100%;
+    text-align:center;
+    line-height:50px;   
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .ExcelIcon{
+    width:60%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat: no-repeat;
+    background-position:-285px -95px;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .PrintIcon{
+    width:60%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat: no-repeat;
+    background-position:-319px -51px;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .MenuDd{
+    width:60%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat: no-repeat;
+    background-position:-148px -228px;
+}
+.CongCu .TimKiemIcon .main-content__menu-icon .MoRongIcon{
+    width:60%;
+    height:100%;
+    background-image:url('./Icon/qlts-icon.svg');
+    background-repeat: no-repeat;
+    background-position:-373px -8px;
+}
+.align-right{
+    text-align: right;
+}
+.align-left{
+    text-align: left;
+}
+.hide-item{
+    display:none;
+}

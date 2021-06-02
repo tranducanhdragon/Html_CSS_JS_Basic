@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Thư viện -->
+    <!-- Add icon library -->
+
+    <!-- Chung -->
+    <link rel="stylesheet" href="../BaiTap/common.css">
+    <!-- Riêng -->
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="Menu">
+        <div class="HeadMenu">
+            <div class="MenuIcon"></div>
+            <div class="MenuText">MISA QLTS</div>
+            <div class="MenuDd" id="ThuNhoMenu">
+            </div>
+        </div>
+        <div class="ContentMenu">
+            <div class="TextMenu">
+                <div class="MenuIcon TongQuanIcon"></div>
+                <div class="MenuText">Tổng quan</div>
+            </div>
+            <div class="TextMenu">
+                <div class="MenuIcon TaiSanIcon" id="TaiSanId"></div>
+                <div class="MenuText">Tài sản</div>
+                <div class="MenuDd" id="TaiSanDd">
+                </div>
+            </div>
+            <div class="ExpandDropDown" id="ExpandDd">
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Tài sản 1</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Tài sản 2</div>
+                </div>
+            </div>
+
+            <div class="TextMenu">
+                <div class="MenuIcon TaiSanHTDBIcon" id="TaiSanHTDBId"></div>
+                <div class="MenuText">Tài sản HT/ĐB</div>
+                <div class="MenuDd" id="HTBDDd">
+                </div>
+            </div>
+            <div class="ExpandDropDown" id="ExpandDd2">
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Ghi tăng</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Thay đổi t/tin</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Đánh giá lại</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Tính hao mòn</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Kiểm kê</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Ghi giảm</div>
+                </div>
+            </div>
+            <div class="TextMenu">
+                <div class="MenuIcon CongCuDungCuIcon" id="CongCuDungCuId"></div>
+                <div class="MenuText">Công cụ dụng cụ</div>
+                <div class="MenuDd" id="CongCuDd">
+                </div>
+            </div>
+            <div class="ExpandDropDown" id="ExpandDd3">
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Công cụ</div>
+                </div>
+                <div class="TextMenu1">
+                    <div class="MenuIcon"></div>
+                    <div class="MenuText">Dụng cụ</div>
+                </div>
+            </div>
+            <div class="TextMenu">
+                <div class="MenuIcon DanhMucIcon"></div>
+                <div class="MenuText">Danh mục</div>
+            </div>
+            <div class="TextMenu">
+                <div class="MenuIcon TraCuuIcon"></div>
+                <div class="MenuText">Tra cứu</div>
+            </div>
+            <div class="TextMenu">
+                <div class="MenuIcon BaoCaoIcon"></div>
+                <div class="MenuText">Báo cáo</div>
+            </div>
+            <div class="TextMenuLon">
+                <div class="MenuIconLon" id="MenuHienRa"></div>
+                <div class="MenuTextLon">Menu lớn</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="Content">
+        <!-- Menu con bên phải khi đã thu nhỏ -->
+        <div class="RightMenuExpand" id="RightMenuTaiSanExpandId">
+            <span class="RightMenuTitle">Tài sản</span>
+            <a href="" class="RightMenuText">
+                <div class="RightMenuIcon">
+                </div>
+                <span>Tài sản 1</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class="RightMenuIcon">
+                </div>
+                <span>Tài sản 2</span>
+            </a>
+        </div>
+
+        <div class="RightMenuExpand" id="RightMenuTaiSanHTExpandId">
+            <span class="RightMenuTitle">Tài sản HT-ĐB</span>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Ghi tăng</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Thay đổi thông tin</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Đánh giá lại</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Tính hao mòn</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Kiểm kê</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class='RightMenuIcon'>
+                </div>
+                <span>Ghi giảm</span>
+            </a>
+        </div>
+        <div class="RightMenuExpand" id="RightMenuCongCuDungCuExpandId">
+            <span class="RightMenuTitle">Công cụ dụng cụ</span>
+            <a href="" class="RightMenuText">
+                <div class="RightMenuIcon">
+                </div>
+                <span>Công cụ</span>
+            </a>
+            <a href="" class="RightMenuText">
+                <div class="RightMenuIcon">
+                </div>
+                <span>Dụng cụ</span>
+            </a>
+        </div>
+
+
+        <div class="HeadContent">
+            <div class="LeftHeadContent">
+                SỞ TÀI CHÍNH
+            </div>
+            <div class="LeftHeadContent">
+                <button class="NamButton" type="button" id="dropdownNamButton" data-toggle="dropdown">
+                    2021
+                </button>
+            </div>
+            <div class="RightHeadContent">
+                <div class='RightHeadIcon ThongBaoIcon tooltip'>
+                    <span class="tooltiptext">Thông báo</span>
+                </div>
+                <div class='RightHeadIcon BangIcon tooltip'>
+                    <span class="tooltiptext">Bảng</span>
+                </div>
+                <div class='RightHeadIcon ThacMacIcon tooltip'>
+                    <span class="tooltiptext">Thắc mắc</span>
+                </div>
+                <div class='RightHeadIcon DangNhapIcon tooltip'>
+                    <span class="tooltiptext">Đăng nhập/ Đăng xuất</span>
+                </div>
+                <div class='RightHeadIcon MoRongIcon tooltip'>
+                    <span class="tooltiptext">Mở rộng</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="BodyContent">
+            <div class="TitleBody">
+                <div class="LeftTitleBody">
+                    Danh sách tài sản
+                    <button class="btnSync">
+                    </button>
+                </div>
+                <div class="RightTitleBody">
+                    <div class="TextMenu">
+                        <div class="MenuText">Thêm</div>
+                        <div class="MenuDd">
+                        </div>
+                    </div>
+                    <div class="TextMenuIcon">
+                        <div class="MenuText">
+                        </div>
+                        <div class="MenuDd">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="InnerContent">
+                <div class="CongCu">
+                    <!-- <button class="buttonBodyContent" id="btnThem">Thêm</button>
+                    <button class="buttonBodyContent" id="btnSua">Sửa</button>
+                    <button class="buttonBodyContent" id="btnXoa">Xóa</button> -->
+                    <div class="TimKiem">
+                        <div class="CongCuTimKiemIcon"></div>
+                        <div class="TimKiemInput">Tìm kiếm tài sản</div>
+                    </div>
+                    <div class="TimKiemIcon">
+                        <div class="main-content__menu-icon">
+                            <div class="ExcelIcon tooltip">
+                                <span class="tooltiptext">Xuất excel</span>
+                            </div>
+                        </div>
+                        <div class="main-content__menu-icon">
+                            <div class='PrintIcon tooltip'>
+                                <span class="tooltiptext">In file</span>
+                            </div>
+                        </div>
+                        <div class="main-content__menu-icon">
+                            <div class='MenuDd tooltip'>
+                                <span class="tooltiptext">Công cụ</span>
+                            </div>
+                        </div>
+                        <div class="main-content__menu-icon">
+                            <div class="MoRongIcon tooltip">
+                                <span class="tooltiptext">Danh mục</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Grid" id="AssetsGrid">
+                    <!-- <table>
+                        <thead>
+                            <tr>
+                                <td>0</td>
+                                <td>STT</td>
+                                <td>Mã tài sản</td>
+                                <td>Tên tài sản</td>
+                                <td>Loại tài sản</td>
+                                <td>Bộ phận sử dụng</td>
+                                <td>Số lượng</td>
+                                <td>Nguyên giá</td>
+                                <td>HM/KH lũy kế</td>
+                                <td>Giá trị còn lại</td>
+                            </tr>
+                        <tbody>
+                    
+                        </tbody>
+                    </table> -->
+                    <!-- gridAssets làm mẫu để cấu hình ra bảng mới hiển thị lên giao diện -->
+                    <div id="gridAssets">
+                        <div class="hide-item">
+                            <div class="col" FieldName="Number">Số thứ tự</div>
+                            <div class="col" FieldName="AssetName">Tên tài sản</div>
+                            <div class="col" FieldName="AssetCode">Mã tài sản</div>
+                            <div class="col" FieldName="AssetType">Loại tài sản</div>
+                            <div class="col" FieldName="PartUsed">Bộ phận sử dụng</div>
+                            <div class="col" FieldName="Amount">Số lượng</div>
+                            <div class="col" FieldName="OriginalPrice" DataType="Money">Nguyên Giá</div>
+                            <div class="col" FieldName="Accumulated">HM/KH lũy kế</div>
+                            <div class="col" FieldName="ResidualValue" DataType="Money">Giá trị còn lại</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="DialogModal">
+    </div>
+    <div class="Dialog">
+        <div class="DialogHead">
+
+        </div>
+        <div class="DialogBody">
+            <div class="DivName">
+                <label id="lbName">Tên</label>
+                <input type="text" id="Name">
+            </div>
+            <div class="DivAge">
+                <label id="lbAge">Tuổi</label>
+                <input type="text" id="Age">
+            </div>
+        </div>
+        <div class="DialogCongCu">
+            <button id="Luu">Lưu</button>
+            <button id="CloseDialog">Đóng</button>
+        </div>
+    </div> -->
+
+    <!-- thư viện -->
+    <script src="../BaiTap/jquery-3.6.0.js"></script>
+
+    <!-- common -->
+    <script src="../BaiTap/index.js"></script>
+    <script src="../BaiTap/common.js"></script>
+    <script src="../BaiTap/data.js"></script>
+    <script src="../BaiTap/BaseGrid.js"></script>
+    <!-- riêng -->
+    <script src="../BaiTap/Asset.js"></script>
+</body>
+
+</html>
