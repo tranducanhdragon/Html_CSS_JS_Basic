@@ -189,7 +189,7 @@ class BaseGrid {
                 ItemId: me.ItemId
             };
 
-        if(me.formDetail){
+        if (me.formDetail) {
             //gọi chung đến hàm open vì thêm và sửa chung một form( tránh lặp code)
             me.formDetail.open(param);
         }
@@ -197,12 +197,12 @@ class BaseGrid {
     /**
      * Bấm xóa sẽ gọi ajax xóa bản ghi được chọn
      */
-    Delete(){
+    Delete() {
         let me = this,
-            url = `${Constant.UrlPrefix}${me.grid.attr('Url')}`,
-            data = me.getSelectedRecord();
+            data = me.getSelectedRecord(),
+            url = `${Constant.UrlPrefix}${me.grid.attr('Url')}${'/'}${data[me.ItemId]}`;
 
-        CommonFn.Ajax(url, Resource.Method.Delete, data, function(response){
+        CommonFn.Ajax(url, Resource.Method.Delete, data, function (response) {
             if (response) {
                 me.loadData(response);
             }
@@ -213,7 +213,7 @@ class BaseGrid {
     }
 
     //nạp
-    refresh(){
+    refresh() {
         let me = this;
 
         me.getDataFromApi();
