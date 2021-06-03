@@ -8,6 +8,8 @@ class BaseGrid {
         //Lấy dữ liệu từ api đã có
         //me.getDataFromApi();
 
+        // Biến lưu form detail thêm sửa
+        me.formDetail = null;
     }
 
     initEvents(data) {
@@ -21,6 +23,12 @@ class BaseGrid {
         //sự kiện bấm thêm sửa xóa nạp
         me.eventToolBar()
     }
+
+    initFormDetail(IdForm) {
+        let me = this;
+        me.formDetail = new BaseForm(IdForm);
+    }
+
     //Tạo table cho đối tượng Asset
     loadData(data) {
         let me = this,
@@ -30,7 +38,12 @@ class BaseGrid {
 
         table.append(thead);
         table.append(tbody);
+
+        me.grid.find("table").remove();
         me.grid.append(table);
+
+        //gán Id để phân biệt các bản ghi
+        me.ItemId = me.grid.attr('ItemId');
     }
 
     createThead() {
@@ -64,7 +77,7 @@ class BaseGrid {
                 //map dữ liệu từ data với FieldName của bảng mẫu gridAssets
                 me.grid.find('.col').each(function () {
                     /* this -> me.grid.find('.col') */
-                    
+
                     let td = $(`<td></td>`),
                         fieldname = $(this).attr('FieldName'),
                         datatype = $(this).attr('DataType');
@@ -77,6 +90,9 @@ class BaseGrid {
 
                     tr.append(td);
                 })
+
+                // Lưu dữ liệu bản ghi vào tr để sau lấy ra
+                tr.data("value", item);
 
                 tbody.append(tr);
             })
@@ -94,35 +110,35 @@ class BaseGrid {
                 me.loadData(response);
             }
             else {
-                me.ThongBaoLoi();
+                me.thongBaoLoi();
             }
         })
     }
     //hiển thị thông báo lỗi khi ko lấy được dữ liệu qua ajax
-    ThongBaoLoi() {
+    thongBaoLoi() {
 
     }
 
     /** sự kiện click vào row trong bảng grid thì sẽ thêm background-color*/
-    eventClickRow(){
+    eventClickRow() {
         let me = this;
-        me.grid.on('click', 'tbody tr', function(){
+        me.grid.on('click', 'tbody tr', function () {
             //remove background của row đã đc chọn trước đó
             me.grid.find('tr').removeClass('selectedRow');
-            
+
             //thêm background cho row mới này
             $(this).addClass('selectedRow');
         })
     }
-    /**Sự kiện eventToolBar thêm sửa xóa nạp */
-    eventToolBar(){
+    /**Sự kiện eventToolBar khi bấm chọn thêm sửa xóa nạp */
+    eventToolBar() {
         let me = this,
             toolBarId = me.grid.attr('toolBar'),
             command = $(`#${toolBarId}`),
             fireEvent = null;
-        command.on('click', '[CommandType]', function(){
+        command.on('click', '[CommandType]', function () {
             let cmdType = $(this).attr('CommandType');
-            switch(cmdType){
+            switch (cmdType) {
                 case Resource.CommandType.Add:
                     fireEvent = me.add;
                     break;
@@ -136,15 +152,84 @@ class BaseGrid {
                     fireEvent = me.refresh;
                     break;
             }
-            if(fireEvent && typeof(fireEvent) === 'function'){
+            if (fireEvent && typeof (fireEvent) === 'function') {
+                //truyền me xuống khi thực hiện hàm vì khi bắt đầu gọi fireEvent(), me là undefined
+                fireEvent = fireEvent.bind(me);
                 fireEvent();
             }
         })
     }
+    /**
+     * bấm nút thêm mới, sẽ gọi đến hàm open ở BaseForm
+     */
+    add() {
+        let me = this,
+            param = {
+                Parent: me,
+                FormMode: Enumeration.FormMode.Add,
+                Record: { ...me.getSelectedRecord() },
+                ItemId: me.ItemId
+            };
 
-    add(){
-        $('.DialogModal').show(300);
-        $('.Dialog').show(300);
+        if (me.formDetail) {
+            me.formDetail.open(param);
+        }
+    }
+
+    /**
+     * 
+     *  Bấm nút sửa sẽ gọi đến hàm edit ở BaseForm
+     */
+    edit() {
+        let me = this,
+            param = {
+                Parent: me,
+                FormMode: Enumeration.FormMode.Edit,
+                Record: { ...me.getSelectedRecord() },
+                ItemId: me.ItemId
+            };
+
+        if(me.formDetail){
+            //gọi chung đến hàm open vì thêm và sửa chung một form( tránh lặp code)
+            me.formDetail.open(param);
+        }
+    }
+    /**
+     * Bấm xóa sẽ gọi ajax xóa bản ghi được chọn
+     */
+    Delete(){
+        let me = this,
+            url = `${Constant.UrlPrefix}${me.grid.attr('Url')}`,
+            data = me.getSelectedRecord();
+
+        CommonFn.Ajax(url, Resource.Method.Delete, data, function(response){
+            if (response) {
+                me.loadData(response);
+            }
+            else {
+                me.thongBaoLoi();
+            }
+        });
+    }
+
+    //nạp
+    refresh(){
+        let me = this;
+
+        me.getDataFromApi();
+    }
+
+    // Lấy dữ liệu bản ghi được select
+    getSelectedRecord() {
+        let me = this,
+            data = {},
+            selected = me.grid.find(".selectedRow");
+
+        if (selected.length > 0) {
+            data = selected.eq(0).data("value");
+        }
+
+        return data;
     }
 }
 

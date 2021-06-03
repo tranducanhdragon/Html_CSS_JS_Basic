@@ -74,11 +74,11 @@ $(document).ready(function(){
     //let taisan = new Asset('#gridAssets', assets);
     
     //khởi tạo Employee
-    let nv = new Employee('#gridEmployee', {});
+    //let nv = new Employee('#gridEmployee', {});
     
     //Khởi tạo grid
     $('#gridAssets').hide();
-    $('#gridEmployee').hide();
+    $('#gridEmployee').show()
 
 
     $('#TaiSanDd').click(function(){

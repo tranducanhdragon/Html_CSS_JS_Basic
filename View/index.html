@@ -335,7 +335,7 @@
     </div>
     <div class="DialogModal hide-item">
     </div>
-    <div class="Dialog hide-item">
+    <div class="Dialog hide-item" id="FormDetailEmployee" Url="v1/employees">
         <div class="DialogHead">
             Thêm mới nhân viên
         </div>
@@ -372,14 +372,14 @@
 
             <div class="row-item d-flex">
                 <div class="control-item flex-1">
-                    <label for="">Số điện thoại</label>
+                    <label for="">Số điện thoại <span style="color: red;">(*)</span></label>
                     <br>
-                    <input type="text" FieldName="PhoneNumber">
+                    <input type="text" FieldName="PhoneNumber" Require="true">
                 </div>
                 <div class="control-item control-right flex-1">
-                    <label for="">Email</label>
+                    <label for="">Email <span style="color: red;">(*)</span></label>
                     <br>
-                    <input type="text" FieldName="Email">
+                    <input type="text" FieldName="Email" Require="true">
                 </div>
             </div>
 
@@ -390,7 +390,7 @@
                     <input type="number" FieldName="Salary" DataType="Number" Require="true">
                 </div>
                 <div class="control-item control-right flex-1">
-                    <label for="">Phòng ban</label>
+                    <label for="">Phòng ban </label>
                     <br>
                     <input type="text" FieldName="DepartmentName">
                 </div>
@@ -405,8 +405,8 @@
             </div>
         </div>
         <div class="DialogCongCu">
-            <button id="Cat">Cất</button>
-            <button id="CloseDialog">Đóng</button>
+            <button id="Cat" Command="Save">Cất</button>
+            <button id="CloseDialog" Command="Cancel">Đóng</button>
         </div>
     </div>
 
@@ -422,6 +422,7 @@
     <script src="../Script/Common/Resource.js"></script>
     <script src="../Script/Common/data.js"></script>
     <script src="../Script/Base/BaseGrid.js"></script>
+    <script src="../Script/Base/BaseForm.js"></script>
     <!-- riêng -->
     <script src="../Script/Object/Asset.js"></script>
     <script src="../Script/Object/Employee.js"></script>
