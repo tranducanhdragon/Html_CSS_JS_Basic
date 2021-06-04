@@ -24,9 +24,9 @@ class BaseGrid {
         me.eventToolBar()
     }
 
-    initFormDetail(IdForm) {
+    initFormDetail(IdForm, FadedDialogId) {
         let me = this;
-        me.formDetail = new BaseForm(IdForm);
+        me.formDetail = new BaseForm(IdForm, FadedDialogId);
     }
 
     //Tạo table cho đối tượng Asset
@@ -167,7 +167,7 @@ class BaseGrid {
             param = {
                 Parent: me,
                 FormMode: Enumeration.FormMode.Add,
-                Record: { ...me.getSelectedRecord() },
+                Record: {},
                 ItemId: me.ItemId
             };
 
@@ -195,26 +195,30 @@ class BaseGrid {
         }
     }
     /**
-     * Bấm xóa sẽ gọi ajax xóa bản ghi được chọn
+     * Bấm xóa sẽ gọi đến hàm openFormDelete bên BaseForm
      */
     Delete() {
         let me = this,
-            data = me.getSelectedRecord(),
-            url = `${Constant.UrlPrefix}${me.grid.attr('Url')}${'/'}${data[me.ItemId]}`;
+            data = this.getSelectedRecord(),
+            param = {
+                Parent: me,
+                FormMode: Enumeration.FormMode.Delete,
+                Record: {...me.getSelectedRecord()},
+                url: `${Constant.UrlPrefix}${me.grid.attr('Url')}${'/'}${data[me.ItemId]}`,
+            };
 
-        CommonFn.Ajax(url, Resource.Method.Delete, data, function (response) {
-            if (response) {
-                me.loadData(response);
-            }
-            else {
-                me.thongBaoLoi();
-            }
-        });
+        if(me.formDetail){
+            me.formDetail.openFormDelete(param);
+        }
+
     }
 
     //nạp
     refresh() {
         let me = this;
+
+        //sự kiện giao diện nạp
+        me.formDetail.fadedDialog.show().delay(1000).fadeOut();;
 
         me.getDataFromApi();
     }

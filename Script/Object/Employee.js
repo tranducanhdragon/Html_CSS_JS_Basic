@@ -1,15 +1,17 @@
-class Employee extends BaseGrid{
-    constructor(IdGrid, data){
+class Employee extends BaseGrid {
+    constructor(IdGrid, data) {
         super(IdGrid, data);
         let me = this;
-        
+
         me.config();
-        me.employee_initEvents();  
-        
+        me.employee_initEvents();
+
+        me.formDelete = null;
+
     }
 
     // Cấu hình các url
-    config(){
+    config() {
         let me = this,
             config = {
                 urlAdd: "v1/Employees",
@@ -20,7 +22,7 @@ class Employee extends BaseGrid{
         Object.assign(me, config);
     }
 
-    employee_initEvents(){
+    employee_initEvents() {
         let me = this;
 
         me.getDataFromApi();
@@ -34,11 +36,35 @@ class Employee extends BaseGrid{
     }
 
     //Mở formDetail Employee
-    initFormDetailEmployee(FormDetailId){
+    initFormDetailEmployee(FormDetailId, FadedDialogId, DeleteFormId) {
         let me = this;
-        me.initFormDetail(FormDetailId);
+
+        //me.initFormDetail(FormDetailId, FadedDialogId);
+
+        /*Khởi tạo đối tượng EmployeeDetail kế thừa từ BaseForm có hàm initFormDetail
+        *   EmployeeDetail sẽ đảm nhiệm việc với form thay Employee
+        **/
+        me.formDetail = new EmployeeDetail(FormDetailId, FadedDialogId, DeleteFormId);
     }
 
+    /**
+     * 
+     * Sự kiện draggable kéo form di chuyển trên màn hình ko áp dụng với content trong form
+     */
+    eventDraggable(classNameHandle , classNameCancel) {
+        let me = this;
+
+        $(`${classNameHandle}`).draggable({ cancel: `${classNameCancel}` });
+    }
+
+    /**
+     * Validate dữ liệu employee
+     */
+    validateCustom(){
+        debugger;
+    }
 }
 let formDetail = new Employee('#gridEmployee', {});
-formDetail.initFormDetailEmployee('#FormDetailEmployee');
+formDetail.initFormDetailEmployee('#FormDetailEmployee', '#FadedDialog','#FormDeleteId');
+formDetail.eventDraggable('.Dialog', '.DialogBody');
+formDetail.eventDraggable('.DialogDelete', '.DialogDeleteBody');

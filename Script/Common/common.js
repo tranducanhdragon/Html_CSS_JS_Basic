@@ -74,6 +74,20 @@ CommonFn.getClassFormat = (dataType) => {
  * hàm format dữ liệu
  */
 CommonFn.getDataFormatted = (data, dataType) => {
+    switch(dataType){
+        case "Enum":
+            data = CommonFn.getValueEnum(data, 'Gender');
+            break
+        case "Number":
+            data = parseInt(data);
+            break;
+        case "Date":
+            data = CommonFn.formatDate(data);
+            break;
+        case "Money":
+            data = CommonFn.formatMoney(data);
+            break;
+    }
     return data;
 }
 

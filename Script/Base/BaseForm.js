@@ -1,8 +1,10 @@
 class BaseForm {
-    constructor(FormId) {
+    constructor(FormId, FadedDialogId, DeleteFormId) {
 
         let me = this;
         me.form = $(`${FormId}`);
+        me.fadedDialog = $(`${FadedDialogId}`);
+        me.formDelete = $(`${DeleteFormId}`)
 
         me.initEvents();
     }
@@ -14,11 +16,13 @@ class BaseForm {
 
         //Khởi tạo sự kiện save và cancel
         me.initEventButtonClick();
+
     }
 
     initEventButtonClick() {
         let me = this;
 
+        //Button click cho form thêm sửa
         me.form.on("click", '.DialogCongCu button', function () {
             let command = $(this).attr("Command");
 
@@ -31,7 +35,22 @@ class BaseForm {
                     break;
             }
         })
+
+        //button click cho form xóa
+        me.formDelete.on('click', '.DialogCongCu button', function () {
+            let command = $(this).attr('Command');
+
+            switch (command) {
+                case Resource.CommandForm.Save:
+                    me.saveDelete();
+                    break;
+                case Resource.CommandForm.Cancel:
+                    me.cancel();
+                    break;
+            }
+        })
     }
+
 
     /**
      * 
@@ -41,13 +60,48 @@ class BaseForm {
         let me = this;
 
         me = Object.assign(me, param);
+
         me.form.show(300);
+        me.fadedDialog.show(300);
+
+        //reset data trên form
+        me.resetDataForm();
 
         //binding dữ liệu lên form nếu có thao tác sửa
         if (me.FormMode == Enumeration.FormMode.Edit) {
             me.bindingData(me.Record);
         }
     }
+
+    /**
+     * hàm mở form delete
+     */
+    openFormDelete(param) {
+        let me = this;
+
+        me = Object.assign(me, param);
+
+        me.formDelete.show(300);
+        me.fadedDialog.show(300);
+    }
+    /**hàm save form delete bằng ajax*/
+    saveDelete() {
+        let me = this,
+            method = Resource.Method.Delete,
+            urlFull = me.url;
+
+        CommonFn.Ajax(urlFull, method, {},function(response){
+            if(response){
+                me.cancel();
+                me.Parent.getDataFromApi();
+            }
+            else{
+                console.log("Có lỗi khi xóa!");
+            }
+        })
+    }
+
+
     /**
      * Lưu dữ liệu trên form xuống db qua ajax
      */
@@ -88,7 +142,7 @@ class BaseForm {
             }
         });
     }
-    
+
     // Lấy dữ liệu từ form
     getDataForm() {
         let me = this,
@@ -139,10 +193,10 @@ class BaseForm {
         });
     }
     //format theo datatype rồi mới load lên
-    setValueControl(control, value, dataType){
+    setValueControl(control, value, dataType) {
         let me = this;
 
-        switch(dataType){
+        switch (dataType) {
             case Resource.DataTypeColumn.Date:
                 value = CommonFn.convertDate(value);
                 break;
@@ -176,7 +230,7 @@ class BaseForm {
 
     /**
      * 
-     * @returns 
+     * validateCustom xuống từng đối tượng kế thừa cụ thể sẽ định nghĩa riêng
      */
     validateCustom() {
         return true;
@@ -249,13 +303,26 @@ class BaseForm {
 
         return isValid;
     }
+    /**
+     * reset data trong form
+     */
+    resetDataForm() {
+        let me = this;
+
+        // reset dữ liệu về rỗng
+        me.form.find("[FieldName]").val("");
+
+        me.form.find(".notValidControl").removeClass("notValidControl");
+    }
 
     /**
-     * Đóng form
+     * Đóng tất cả loại form
      */
     cancel() {
         let me = this;
 
-        me.form.hide();
+        me.form.hide(300);
+        me.formDelete.hide(300);
+        me.fadedDialog.hide(300);
     }
 }

@@ -7,17 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Thư viện -->
     <!-- Add icon library -->
-
+        <!--thư viện jqueryUI-->
+    <link rel="stylesheet" href="../Css/Common/jquery-ui.css">
     <!-- Chung -->
     <link rel="stylesheet" href="../Css/Common/common.css">
     <!-- Riêng -->
     <link rel="stylesheet" href="../Css/Object/Asset.css">
-    <link rel="stylesheet" href="../Css/Object/employee.css">
+    <link rel="stylesheet" href="../Css/Object/Employee.css">
 
     <title>Document</title>
 </head>
-
-<body>
     <div class="Menu">
         <div class="HeadMenu">
             <div class="MenuIcon"></div>
@@ -321,11 +320,11 @@
                             <div class="col" FieldName="FullName">Họ tên</div>
                             <div class="col" FieldName="EmployeeCode">Mã nhân viên</div>
                             <div class="col" FieldName="DateOfBirth" DataType="Date">Ngày sinh</div>
-                            <div class="col" FieldName="Gender">Giới tính</div>
+                            <div class="col" FieldName="Gender" DataType="Enum">Giới tính</div>
                             <div class="col" FieldName="Address">Địa chỉ</div>
-                            <div class="col" FieldName="PhoneNumber">Số điện thoại</div>
+                            <div class="col" FieldName="PhoneNumber" DataType="Number">Số điện thoại</div>
                             <div class="col" FieldName="Email">Email</div>
-                            <div class="col" FieldName="Salary" DataType="Number">Lương</div>
+                            <div class="col" FieldName="Salary" DataType="Money">Lương</div>
                             <div class="col" FieldName="DepartmentName">Phòng ban</div>
                         </div>
                     </div>
@@ -333,7 +332,7 @@
             </div>
         </div>
     </div>
-    <div class="DialogModal hide-item">
+    <div class="DialogModal hide-item" id="FadedDialog">
     </div>
     <div class="Dialog hide-item" id="FormDetailEmployee" Url="v1/employees">
         <div class="DialogHead">
@@ -364,9 +363,9 @@
                     </select>
                 </div>
                 <div class="control-item control-right flex-1">
-                    <label for="">Ngày sinh</label>
+                    <label for="">Ngày sinh <span style="color: red;">(*)</span></label>
                     <br>
-                    <input type="date" FieldName="DateOfBirth" DataType="Date">
+                    <input type="date" FieldName="DateOfBirth" DataType="Date" Require="true">
                 </div>
             </div>
 
@@ -385,9 +384,9 @@
 
             <div class="row-item d-flex">
                 <div class="control-item flex-1">
-                    <label for="">Mức lương <span style="color: red;">(*)</span></label>
+                    <label for="">Mức lương </label>
                     <br>
-                    <input type="number" FieldName="Salary" DataType="Number" Require="true">
+                    <input type="number" FieldName="Salary" DataType="Number">
                 </div>
                 <div class="control-item control-right flex-1">
                     <label for="">Phòng ban </label>
@@ -410,9 +409,23 @@
         </div>
     </div>
 
+    <div class="DialogDelete hide-item" id="FormDeleteId" Url="v1/employees">
+        <div class="DialogDeleteHead">
+            Xóa
+        </div>
+        <div class="DialogDeleteBody">
+            Bạn có chắc chắn muốn xóa?
+        </div>
+        <div class="DialogCongCu">
+            <button id="Cat" Command="Save">Xác nhận</button>
+            <button id="CloseDialog" Command="Cancel">Đóng</button>
+        </div>
+    </div>
+
 
     <!-- thư viện -->
     <script src="../Script/Common/jquery-3.6.0.js"></script>
+    <script src="../Script/Common/jquery-ui.js"></script>
 
     <!-- common -->
     <script src="../Script/Object/index.js"></script>
@@ -425,7 +438,9 @@
     <script src="../Script/Base/BaseForm.js"></script>
     <!-- riêng -->
     <script src="../Script/Object/Asset.js"></script>
+    <script src="../Script/Object/EmployeeDetail.js"></script>
     <script src="../Script/Object/Employee.js"></script>
+    
 </body>
 
 </html>
