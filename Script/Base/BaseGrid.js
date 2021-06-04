@@ -223,10 +223,9 @@ class BaseGrid {
     refresh() {
         let me = this;
 
-        //sự kiện giao diện nạp
-        me.formDetail.fadedDialog.show().delay(1000).fadeOut();;
-
         me.getDataFromApi();
+        //hiện giao diện nạp 1s
+        me.formDetail.fadedDialog.show().delay(1000).fadeOut();
     }
 
     // Lấy dữ liệu bản ghi được select

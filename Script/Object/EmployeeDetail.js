@@ -9,33 +9,32 @@ class EmployeeDetail extends BaseForm{
      * hàm validate dữ liệu employee khi mở form employee
      */
     validateCustom(){
-        debugger;
+
+        let me = this,
+            isValid = true;
+
+        isValid = me.isValidDuplicateEmployeeCode();
+
+        return isValid;
+    }
+    isValidDuplicateEmployeeCode(){
         let me = this,
             isValid = true,
-            maForm = me.form.find('[FieldName="EmployeeCode"]').val();
+            maForm = me.form.find('[FieldName="EmployeeCode"]').val(),
+            lstDup = me.getListDupEmployeeCode(maForm);
 
         //TH thêm mới
         if(isValid && me.FormMode == Enumeration.FormMode.Add){
             //Kiểm tra mã trên form có trong me.AllRecord ko
-            if(me.getListDupEmployeeCode(maForm).length > 0  ){
+            if(lstDup.length > 0  ){
                 isValid = false;
             }
 
         }
         //TH sửa
         if(isValid && me.FormMode == Enumeration.FormMode.Edit){
-            let len = me.getListDupEmployeeCode(maForm).length;
-            if(me.getListDupEmployeeCode(maForm)[0]['EmployeeCode'] == maForm){
-
-                // TH mã trên form là mã chưa nhập mới
-                // if(me.getListDupEmployeeCode(maForm).length == 1){
-                //     isValid = true;
-                // }
-
-                //kiểm tra TH mã trên form là mã mới vừa được nhập
-                // if(me.getListDupEmployeeCode(maForm).length > 1){
-                //     isValid = false;
-                // }
+            //Kiểm tra nếu trùng EmployeeCode thì xét EmployeeId
+            if(lstDup.length > 0 && lstDup[0]['EmployeeId'] !== me.Record['EmployeeId']){
                 isValid = false;
             }
 
@@ -43,6 +42,7 @@ class EmployeeDetail extends BaseForm{
 
         return isValid;
     }
+
     getListDupEmployeeCode(employeeCode){
         let me = this,
             listDup = [];
