@@ -31,7 +31,7 @@
             <div class="MenuText">Tổng quan</div>
         </div>
         <div class="TextMenu" id="TaiSanDd">
-            <div class="MenuIcon TaiSanIcon" id="TaiSanId"></div>
+            <div class="MenuIcon TaiSanIcon"></div>
             <div class="MenuText">Tài sản</div>
             <div class="MenuDd">
             </div>
@@ -47,8 +47,8 @@
             </div>
         </div>
 
-        <div class="TextMenu" id="HTBDDd">
-            <div class="MenuIcon TaiSanHTDBIcon" id="TaiSanHTDBId"></div>
+        <div class="TextMenu" id="HTDBDd">
+            <div class="MenuIcon TaiSanHTDBIcon"></div>
             <div class="MenuText">Tài sản HT/ĐB</div>
             <div class="MenuDd">
             </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="TextMenu" id="CongCuDd">
-            <div class="MenuIcon CongCuDungCuIcon" id="CongCuDungCuId"></div>
+            <div class="MenuIcon CongCuDungCuIcon"></div>
             <div class="MenuText">Công cụ dụng cụ</div>
             <div class="MenuDd">
             </div>
@@ -318,7 +318,7 @@
                 <!-- Danh sách nhân viên -->
                 <div id="gridEmployee" Url="v1/employees" toolBar="ToolBarEmployee" ItemId="EmployeeId">
                     <div class="hide-item">
-                        <div class="col" FieldName="FullName">Họ tên</div>
+                        <div class="col" FieldName="FullName" DataType="FullName">Họ tên</div>
                         <div class="col" FieldName="EmployeeCode">Mã nhân viên</div>
                         <div class="col" FieldName="DateOfBirth" DataType="Date">Ngày sinh</div>
                         <div class="col" FieldName="Gender" DataType="Enum">Giới tính</div>
@@ -334,6 +334,7 @@
     </div>
 </div>
 <div class="DialogModal hide-item" id="FadedDialog">
+    <div class="DialogLoading"></div>
 </div>
 <div class="Dialog hide-item" id="FormDetailEmployee" Url="v1/employees">
     <div class="DialogHead">
@@ -342,12 +343,12 @@
     <div class="DialogBody">
         <div class="row-item d-flex">
             <div class="control-item flex-1">
-                <label for="">Họ tên <span style="color: red;">(*)</span></label>
+                <label for="">Họ tên <span class="tbFullName" style="color: red;">(*)</span></label>
                 <br>
                 <input type="text" FieldName="FullName" Require="true">
             </div>
             <div class="control-item control-right flex-1">
-                <label for="">Mã nhân viên <span style="color: red;">(*)</span></label>
+                <label for="">Mã nhân viên <span class="tbEmployeeCode" style="color: red;">(*)</span></label>
                 <br>
                 <input type="text" FieldName="EmployeeCode" Require="true">
             </div>
@@ -372,12 +373,12 @@
 
         <div class="row-item d-flex">
             <div class="control-item flex-1">
-                <label for="">Số điện thoại <span style="color: red;">(*)</span></label>
+                <label for="">Số điện thoại <span class="tbPhone" style="color: red;">(*)</span></label>
                 <br>
                 <input type="text" FieldName="PhoneNumber" Require="true">
             </div>
             <div class="control-item control-right flex-1">
-                <label for="">Email <span style="color: red;">(*)</span></label>
+                <label for="">Email <span class="tbEmail" style="color: red;">(*)</span></label>
                 <br>
                 <input type="text" FieldName="Email" Require="true">
             </div>

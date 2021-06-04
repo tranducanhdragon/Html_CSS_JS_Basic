@@ -13,7 +13,38 @@ class EmployeeDetail extends BaseForm{
         let me = this,
             isValid = true;
 
-        isValid = me.isValidDuplicateEmployeeCode();
+        if(me.isValidDuplicateEmployeeCode()){
+            isValid = me.isValidDuplicateEmployeeCode();
+            me.form.find('.DialogBody .tbEmployeeCode').text('(*)');
+        }
+        else{
+            isValid = false;
+            me.form.find('.DialogBody .tbEmployeeCode').text('Đã tồn tại mã này!');        
+        }
+        if(isValid = me.isValidateEmail()){
+            isValid = me.isValidateEmail();
+            me.form.find('.DialogBody .tbEmail').text('(*)');
+        }
+        else{
+            isValid = false;
+            me.form.find('.DialogBody .tbEmail').text('Email không đúng định dạng!');
+        }
+        if(isValid = me.isValidatePhone()){
+            isValid = me.isValidatePhone();
+            me.form.find('.DialogBody .tbPhone').text('(*)');
+        }
+        else{           
+            isValid = false;
+            me.form.find('.DialogBody .tbPhone').text('Không đúng định dạng!');
+        }
+        if(me.isValidateFullName()){
+            isValid = me.isValidateFullName();
+            me.form.find('.DialogBody .tbPhone').text('(*)');
+        }
+        else{
+            isValid = false;
+            me.form.find('.DialogBody .tbFullName').text('Không đúng định dạng!');
+        }
 
         return isValid;
     }
@@ -51,5 +82,39 @@ class EmployeeDetail extends BaseForm{
             return record['EmployeeCode'] == employeeCode;
         });
         return listDup;
+    }
+
+    //Validate Email
+    isValidateEmail(){
+        let me = this,
+            isValid = true,
+            email = me.form.find('[FieldName="Email"]').val();
+
+        if(!CommonFn.formatEmail(email)){
+            isValid = false;
+        };
+        return isValid;
+    }
+    isValidatePhone(){
+        let me = this,
+            isValid = true,
+            phone = me.form.find('[FieldName="PhoneNumber"]').val();
+
+        if(!CommonFn.formatPhoneNumber(phone)){
+            isValid = false;
+        };
+        return isValid;
+
+    }
+    isValidateFullName(){
+        let me = this,
+            isValid = true,
+            fullname = me.form.find('[FieldName="FullName"]').val();
+        let a = CommonFn.formatFullName(fullname);
+        if(!CommonFn.formatFullName(fullname)){
+            isValid = false;
+        };
+        return isValid;
+
     }
 }

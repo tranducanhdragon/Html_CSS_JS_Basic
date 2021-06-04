@@ -92,7 +92,11 @@ class BaseForm {
 
         CommonFn.Ajax(urlFull, method, {},function(response){
             if(response){
+                
+                //show form loading
+                me.fadedDialog.show().delay(1000).fadeOut();
                 me.cancel();
+
                 me.Parent.getDataFromApi();
             }
             else{
@@ -134,8 +138,11 @@ class BaseForm {
         CommonFn.Ajax(urlFull, method, data, function (response) {
             if (response) {
                 console.log("Cất dữ liệu thành công");
-
+                
+                //show form loading
+                me.fadedDialog.show().delay(1000).fadeOut();
                 me.cancel();
+
                 me.Parent.getDataFromApi();
             } else {
                 console.log("Có lỗi khi cất dữ liệu");
@@ -174,6 +181,9 @@ class BaseForm {
                 break;
             case Resource.DataTypeColumn.Enum:
                 value = parseInt(value);
+                break;
+            case Resource.DataTypeColumn.FullName:
+                value = CommonFn.formatFullName(value);
                 break;
         }
 

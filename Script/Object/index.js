@@ -81,56 +81,67 @@ $(document).ready(function(){
     $('#gridEmployee').show()
 
 
-    $('#TaiSanDd').click(function(){
-        $('#ExpandDd').slideToggle(300);
-    });
-
-    /* dropdown TaiSan HT/BD */
-    $('#HTBDDd').click(function(){
-        $('#ExpandDd2').slideToggle(300);
-    });
-
-    /* dropdown Công cụ dụng cụ*/
-    $('#CongCuDd').click(function(){
-        $('#ExpandDd3').slideToggle(300);
-        
-    });
-
     //Menu hiện ra và thu gọn
     $('#ThuNhoMenu').click(function(){
         $('.Content').removeClass('MenuRa');
         $('.Content').addClass('MenuVao');
         $('.Content').css("width","1457px");
+
+        $('#ExpandDd').slideUp();
+        $('#ExpandDd2').slideUp();
+        $('#ExpandDd3').slideUp();
     });
     $('#MenuHienRa').click(function(){
         $('.Content').removeClass('MenuVao');
         $('.Content').addClass('MenuRa');
         $('.Content').css("width","calc(100% - 253px)");
+
+        $('#RightMenuTaiSanExpandId').hide();
+        $('#RightMenuTaiSanHTExpandId').hide();
+        $('#RightMenuCongCuDungCuExpandId').hide();
     });
 
     //RightMenu con khi menu bị thu nhỏ
-    $('#TaiSanId').click(function(){
+    $('#TaiSanDd').click(function(){
         if($('.Content').hasClass('MenuVao')){
-            $('#RightMenuTaiSanExpandId').slideToggle(300);
+            $('#RightMenuTaiSanExpandId').toggle('slide',500);
+            $('#RightMenuTaiSanHTExpandId').hide();
+            $('#RightMenuCongCuDungCuExpandId').hide();
+            $('#ExpandDd').slideUp();
         }
         else{
             $('#RightMenuTaiSanExpandId').hide();
+            $('#ExpandDd').slideToggle(300);
+            $('#ExpandDd2').slideUp();
+            $('#ExpandDd3').slideUp();
         }
     })
-    $('#TaiSanHTDBId').click(function(){
+    $('#HTDBDd').click(function(){
         if($('.Content').hasClass('MenuVao')){
-            $('#RightMenuTaiSanHTExpandId').slideToggle(300);
+            $('#RightMenuTaiSanHTExpandId').toggle('slide', 500);
+            $('#RightMenuTaiSanExpandId').hide();
+             $('#RightMenuCongCuDungCuExpandId').hide();
+            $('#ExpandDd2').slideUp();
         }
         else{
             $('#RightMenuTaiSanHTExpandId').hide();
+            $('#ExpandDd2').slideToggle(300);
+            $('#ExpandDd').slideUp();
+            $('#ExpandDd3').slideUp();
         }
     })
-    $('#CongCuDungCuId').click(function(){
+    $('#CongCuDd').click(function(){
         if($('.Content').hasClass('MenuVao')){
-            $('#RightMenuCongCuDungCuExpandId').slideToggle(300);
+            $('#RightMenuCongCuDungCuExpandId').toggle('slide', 500);
+            $('#RightMenuTaiSanHTExpandId').hide();
+             $('#RightMenuTaiSanExpandId').hide();
+            $('#ExpandDd3').slideUp();
         }
         else{
             $('#RightMenuCongCuDungCuExpandId').hide();
+            $('#ExpandDd3').slideToggle(300);
+            $('#ExpandDd').slideUp();
+            $('#ExpandDd2').slideUp();
         }
     })
 

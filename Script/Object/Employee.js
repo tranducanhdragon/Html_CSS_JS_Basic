@@ -33,6 +33,7 @@ class Employee extends BaseGrid {
         //gọi đến sự kiện eventToolBar
         me.eventToolBar();
 
+
     }
 
     //Mở formDetail Employee

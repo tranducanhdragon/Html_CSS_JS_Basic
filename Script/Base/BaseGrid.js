@@ -20,6 +20,7 @@ class BaseGrid {
         //sự kiện click vào một hàng thì đổi background
         me.eventClickRow();
 
+
         //sự kiện bấm thêm sửa xóa nạp
         me.eventToolBar()
     }
@@ -44,6 +45,9 @@ class BaseGrid {
 
         //gán Id để phân biệt các bản ghi
         me.ItemId = me.grid.attr('ItemId');
+
+        //sự kiện chọn mặc định hàng đầu tiên khi người dùng chưa chọn hàng nào
+        me.eventSelectFirstRow();
     }
 
     createThead() {
@@ -134,6 +138,14 @@ class BaseGrid {
             $(this).addClass('selectedRow');
         })
     }
+
+    //sự kiện chọn hàng đầu tiên trong grid
+    eventSelectFirstRow(){
+        let me = this;
+        let a = me.grid.find('tbody tr').eq(0).val();
+        me.grid.find('tbody tr').eq(0).addClass('selectedRow');
+    }
+
     /**Sự kiện eventToolBar khi bấm chọn thêm sửa xóa nạp */
     eventToolBar() {
         let me = this,

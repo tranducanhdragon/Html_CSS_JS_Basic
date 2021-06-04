@@ -560,6 +560,15 @@ thead td, th{
     top:0px;
     opacity:50%;
 }
+.DialogModal .DialogLoading{
+    width:200px;
+    height:200px;
+    background-image:url('./Icon/loading.svg');
+    background-repeat:no-repeat;
+    position:absolute;
+    left:42%;
+    top:32%;
+}
 .Dialog{
     width:600px;
     height:400px;

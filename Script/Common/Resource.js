@@ -5,7 +5,8 @@ var Resource = Resource || {};
 Resource.DataTypeColumn = {
     Number: "Number",
     Date: "Date",
-    Enum: "Enum"
+    Enum: "Enum",
+    FullName: "FullName"
 };
 
 // Các method khi gọi ajax

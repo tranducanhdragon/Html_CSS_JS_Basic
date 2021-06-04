@@ -1,6 +1,23 @@
 // Các hàm dùng chung toàn chương trình
 var CommonFn = CommonFn || {};
 
+//Hàm format fullname
+CommonFn.formatFullName = fullname =>{
+    let regex = new RegExp("^[A-Za-z]*$");
+    return regex.test(fullname);
+}
+
+//Hàm format email
+CommonFn.formatEmail = email => {
+    let regexEmail = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
+    return regexEmail.test(email);
+}
+//Hàm format phone
+CommonFn.formatPhoneNumber = phone => {
+    let regexEmail = new RegExp("(09|01[2|6|8|9])+([0-9]{8})");
+    return regexEmail.test(phone);
+}
+
 // Hàm format số tiền
 CommonFn.formatMoney = money => {
     if(money && !isNaN(money)){
