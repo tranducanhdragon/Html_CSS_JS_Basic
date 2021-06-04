@@ -1,4 +1,4 @@
-class Asset extends BaseGrid{
+class Asset extends BaseGrid {
     constructor(IdGrid, data){
         super(IdGrid, data);
         this.callFromBase(data);

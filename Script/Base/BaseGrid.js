@@ -5,11 +5,11 @@ class BaseGrid {
         me.grid = $(IdGrid);
         // me.initEvents(data);
 
-        //Lấy dữ liệu từ api đã có
-        //me.getDataFromApi();
-
         // Biến lưu form detail thêm sửa
         me.formDetail = null;
+
+        //Lưu dữ liệu thô vào biến cacheDataGrid
+        me.cacheDataGrid = null;
     }
 
     initEvents(data) {
@@ -107,6 +107,10 @@ class BaseGrid {
 
         CommonFn.Ajax(url, Resource.Method.Get, {}, function (response) {
             if (response) {
+                //Lưu data thô vào me.cacheDataGrid
+                me.cacheDataGrid = response;
+
+
                 me.loadData(response);
             }
             else {
@@ -168,7 +172,8 @@ class BaseGrid {
                 Parent: me,
                 FormMode: Enumeration.FormMode.Add,
                 Record: {},
-                ItemId: me.ItemId
+                ItemId: me.ItemId,
+                AllRecord: me.cacheDataGrid
             };
 
         if (me.formDetail) {
@@ -186,7 +191,8 @@ class BaseGrid {
                 Parent: me,
                 FormMode: Enumeration.FormMode.Edit,
                 Record: { ...me.getSelectedRecord() },
-                ItemId: me.ItemId
+                ItemId: me.ItemId,
+                AllRecord: me.cacheDataGrid
             };
 
         if (me.formDetail) {
