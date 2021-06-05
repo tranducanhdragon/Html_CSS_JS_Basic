@@ -128,31 +128,6 @@ body, html{
     background-repeat:no-repeat;
 }
 
-.RightHeadIcon .tooltipThongBao{
-    position:relative;
-    margin-top:0.1%;
-    margin-left:4%;
-}
-.RightHeadIcon .tooltipBang{
-    position:relative;
-    margin-top:0.1%;
-    margin-left:6%;
-}
-.RightHeadIcon .tooltipThacMac{
-    position:relative;
-    margin-top:0.1%;
-    margin-left:8%;
-}
-.RightHeadIcon .tooltipDangNhap{
-    position:relative;
-    margin-top:0.1%;
-    margin-left:10%;
-}
-.RightHeadIcon .tooltipMoRong{
-    position:relative;
-    margin-top:0.1%;
-    margin-left:12%;
-}
 .RightHeadContent .ThongBaoIcon{
     background-position:-325px -95px;
 }
@@ -167,25 +142,6 @@ body, html{
 }
 .RightHeadContent .MoRongIcon{
     background-position:-369px -5px;
-}
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 10%;
-  background-color: #acacac;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
- 
-  /* Position the tooltip text - see examples below! */
-  position:fixed;
-  left:75%;
-  z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
 }
 
 .btnHeadContent{
@@ -504,10 +460,7 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-285px -95px;
 }
-.CongCu .TimKiemIcon .main-content__menu-icon .tooltipExcel{
-    margin-left:-5%;
-    margin-top:-2%;
-}
+
 .CongCu .TimKiemIcon .main-content__menu-icon .PrintIcon{
     width:60%;
     height:100%;
@@ -515,10 +468,7 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-319px -51px;
 }
-.CongCu .TimKiemIcon .main-content__menu-icon .tooltipIn{
-    margin-left:0%;
-    margin-top:-2%;
-}
+
 .CongCu .TimKiemIcon .main-content__menu-icon .MenuDd{
     width:60%;
     height:100%;
@@ -526,10 +476,7 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-148px -228px;
 }
-.CongCu .TimKiemIcon .main-content__menu-icon .tooltipCongCu{
-    margin-left:4%;
-    margin-top:-2%;
-}
+
 .CongCu .TimKiemIcon .main-content__menu-icon .MoRongIcon{
     width:60%;
     height:100%;
@@ -537,10 +484,7 @@ thead td, th{
     background-repeat: no-repeat;
     background-position:-373px -8px;
 }
-.CongCu .TimKiemIcon .main-content__menu-icon .tooltipDanhMuc{
-    margin-left:8%;
-    margin-top:-2%;
-}
+
 .align-right{
     text-align: right;
 }
