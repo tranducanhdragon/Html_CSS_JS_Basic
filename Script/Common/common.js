@@ -3,7 +3,7 @@ var CommonFn = CommonFn || {};
 
 //Hàm format fullname
 CommonFn.formatFullName = fullname =>{
-    let regex = new RegExp("^[A-Za-z]*$");
+    let regex = /([A-Z][a-z]*\s)*/;
     return regex.test(fullname);
 }
 

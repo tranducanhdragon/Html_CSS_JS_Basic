@@ -1,10 +1,11 @@
 class BaseForm {
-    constructor(FormId, FadedDialogId, DeleteFormId) {
+    constructor(FormId, FadedDialogId, DeleteFormId, ThongBaoFormId) {
 
         let me = this;
         me.form = $(`${FormId}`);
         me.fadedDialog = $(`${FadedDialogId}`);
-        me.formDelete = $(`${DeleteFormId}`)
+        me.formDelete = $(`${DeleteFormId}`);
+        me.formThongBao = $(`${ThongBaoFormId}`);
 
         me.initEvents();
     }
@@ -49,6 +50,17 @@ class BaseForm {
                     break;
             }
         })
+
+        //button click cho form thông báo
+        me.formThongBao.on('click', '.DialogCongCu button', function(){
+            let command = $(this).attr('Command');
+
+            switch (command) {
+                case Resource.CommandForm.Cancel:
+                    me.cancel();
+                    break;
+            }
+        })
     }
 
 
@@ -72,6 +84,16 @@ class BaseForm {
             me.bindingData(me.Record);
         }
     }
+    /**
+     * 
+     * hàm mở form thông báo lỗi 
+     */
+    openFormThongBao(){
+        let me = this;
+
+        me.formThongBao.show(300);
+        me.fadedDialog.show(300);
+    }
 
     /**
      * hàm mở form delete
@@ -88,21 +110,29 @@ class BaseForm {
     saveDelete() {
         let me = this,
             method = Resource.Method.Delete,
-            urlFull = me.url;
+            urlFull = me.url,
+            urlId = "";
 
-        CommonFn.Ajax(urlFull, method, {},function(response){
-            if(response){
-                
-                //show form loading
-                me.fadedDialog.show().delay(1000).fadeOut();
-                me.cancel();
 
-                me.Parent.getDataFromApi();
-            }
-            else{
-                console.log("Có lỗi khi xóa!");
-            }
-        })
+        me.AllRecord.filter(function (item) {
+            urlId = `${urlFull}/${item[me.ItemId]}`;
+            CommonFn.Ajax(urlId, method, {}, function (response) {
+                if (response) {
+
+
+                    me.Parent.getDataFromApi();
+                }
+                else {
+                    console.log("Có lỗi khi xóa!");
+                }
+            })
+        });
+
+
+        //show form loading
+        me.fadedDialog.show().delay(1000).fadeOut();
+        me.cancel();
+
     }
 
 
@@ -138,7 +168,7 @@ class BaseForm {
         CommonFn.Ajax(urlFull, method, data, function (response) {
             if (response) {
                 console.log("Cất dữ liệu thành công");
-                
+
                 //show form loading
                 me.fadedDialog.show().delay(1000).fadeOut();
                 me.cancel();
@@ -334,5 +364,6 @@ class BaseForm {
         me.form.hide(300);
         me.formDelete.hide(300);
         me.fadedDialog.hide(300);
+        me.formThongBao.hide(300);
     }
 }

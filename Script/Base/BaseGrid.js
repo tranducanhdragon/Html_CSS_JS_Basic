@@ -25,9 +25,9 @@ class BaseGrid {
         me.eventToolBar()
     }
 
-    initFormDetail(IdForm, FadedDialogId) {
+    initFormDetail(IdForm) {
         let me = this;
-        me.formDetail = new BaseForm(IdForm, FadedDialogId);
+        me.formDetail = new BaseForm(IdForm);
     }
 
     //Tạo table cho đối tượng Asset
@@ -124,7 +124,11 @@ class BaseGrid {
     }
     //hiển thị thông báo lỗi khi ko lấy được dữ liệu qua ajax
     thongBaoLoi() {
+        
+        let me = this;
 
+        //mở form thông báo bên BaseForm
+        me.formDetail.openFormThongBao();
     }
 
     /** sự kiện click vào row trong bảng grid thì sẽ thêm background-color*/
@@ -132,15 +136,24 @@ class BaseGrid {
         let me = this;
         me.grid.on('click', 'tbody tr', function () {
             //remove background của row đã đc chọn trước đó
-            me.grid.find('tr').removeClass('selectedRow');
+            //me.grid.find('tr').removeClass('selectedRow');
 
-            //thêm background cho row mới này
-            $(this).addClass('selectedRow');
+            
+            if ($(this).hasClass('selectedRow')) {
+                //remove background nếu click lại lần nữa
+                $(this).removeClass('selectedRow');
+            }
+            else {
+                //thêm background cho row mới này
+                $(this).addClass('selectedRow');
+            }
+
+
         })
     }
 
     //sự kiện chọn hàng đầu tiên trong grid
-    eventSelectFirstRow(){
+    eventSelectFirstRow() {
         let me = this;
         let a = me.grid.find('tbody tr').eq(0).val();
         me.grid.find('tbody tr').eq(0).addClass('selectedRow');
@@ -198,18 +211,25 @@ class BaseGrid {
      *  Bấm nút sửa sẽ gọi đến hàm edit ở BaseForm
      */
     edit() {
+        
         let me = this,
+            allSelectRecord = me.getAllSelectedRecord(),
+            toolBarId = me.grid.attr('toolBar'),
+            command = $(`#${toolBarId}`),
             param = {
                 Parent: me,
                 FormMode: Enumeration.FormMode.Edit,
-                Record: { ...me.getSelectedRecord() },
+                Record: { ...me.getOneSelectedRecord() },
                 ItemId: me.ItemId,
                 AllRecord: me.cacheDataGrid
             };
 
-        if (me.formDetail) {
+        if (me.formDetail && allSelectRecord.length == 1) {
             //gọi chung đến hàm open vì thêm và sửa chung một form( tránh lặp code)
             me.formDetail.open(param);
+        }
+        else{
+            me.thongBaoLoi();
         }
     }
     /**
@@ -217,18 +237,21 @@ class BaseGrid {
      */
     Delete() {
         let me = this,
-            data = this.getSelectedRecord(),
+            data = this.getAllSelectedRecord(),
             param = {
                 Parent: me,
                 FormMode: Enumeration.FormMode.Delete,
-                Record: {...me.getSelectedRecord()},
-                url: `${Constant.UrlPrefix}${me.grid.attr('Url')}${'/'}${data[me.ItemId]}`,
+                AllRecord: data,
+                url: `${Constant.UrlPrefix}${me.grid.attr('Url')}`,
+                ItemId: me.ItemId
             };
 
-        if(me.formDetail){
+        if (me.formDetail && data.length > 0) {
             me.formDetail.openFormDelete(param);
         }
-
+        else{
+            me.thongBaoLoi();
+        }
     }
 
     //nạp
@@ -240,8 +263,8 @@ class BaseGrid {
         me.formDetail.fadedDialog.show().delay(1000).fadeOut();
     }
 
-    // Lấy dữ liệu bản ghi được select
-    getSelectedRecord() {
+    // Lấy dữ liệu 1 bản ghi được select
+    getOneSelectedRecord() {
         let me = this,
             data = {},
             selected = me.grid.find(".selectedRow");
@@ -249,6 +272,20 @@ class BaseGrid {
         if (selected.length > 0) {
             data = selected.eq(0).data("value");
         }
+
+        return data;
+    }
+
+    //Lấy dữ liệu của các bản ghi được select
+    getAllSelectedRecord() {
+        let me = this,
+            data = [],
+            selected = me.grid.find(".selectedRow");
+
+        let a = selected.eq(0);
+        selected.each(function () {
+            data.push($(this).data("value"));
+        });
 
         return data;
     }

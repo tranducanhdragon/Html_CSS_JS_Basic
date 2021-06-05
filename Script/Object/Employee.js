@@ -37,7 +37,7 @@ class Employee extends BaseGrid {
     }
 
     //Mở formDetail Employee
-    initFormDetailEmployee(FormDetailId, FadedDialogId, DeleteFormId) {
+    initFormDetailEmployee(FormDetailId, FadedDialogId, DeleteFormId, ThongBaoFormId) {
         let me = this;
 
         //me.initFormDetail(FormDetailId, FadedDialogId);
@@ -45,7 +45,7 @@ class Employee extends BaseGrid {
         /*Khởi tạo đối tượng EmployeeDetail kế thừa từ BaseForm có hàm initFormDetail
         *   EmployeeDetail sẽ đảm nhiệm việc với form thay Employee
         **/
-        me.formDetail = new EmployeeDetail(FormDetailId, FadedDialogId, DeleteFormId);
+        me.formDetail = new EmployeeDetail(FormDetailId, FadedDialogId, DeleteFormId, ThongBaoFormId);
     }
 
     /**
@@ -66,6 +66,6 @@ class Employee extends BaseGrid {
     }
 }
 let formDetail = new Employee('#gridEmployee', {});
-formDetail.initFormDetailEmployee('#FormDetailEmployee', '#FadedDialog','#FormDeleteId');
+formDetail.initFormDetailEmployee('#FormDetailEmployee', '#FadedDialog','#FormDeleteId', '#FormThongBaoId');
 formDetail.eventDraggable('.Dialog', '.DialogBody');
 formDetail.eventDraggable('.DialogDelete', '.DialogDeleteBody');

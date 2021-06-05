@@ -1,6 +1,6 @@
 class EmployeeDetail extends BaseForm{
-    constructor(FormId, FadedDialogId, DeleteFormId){
-        super(FormId, FadedDialogId, DeleteFormId);
+    constructor(FormId, FadedDialogId, DeleteFormId, ThongBaoFormId){
+        super(FormId, FadedDialogId, DeleteFormId, ThongBaoFormId);
 
     }
 
